@@ -11,7 +11,7 @@ export default function NewMeetingForm({onSubmit}) {
 
     return (
         <form onSubmit={submit}>
-            <h3>Dodaj nowe spotkanie</h3>
+
             <label>Nazwa</label>
             <input type="text" value={title}
                    onChange={(e) => setTitle(e.target.value)}/>

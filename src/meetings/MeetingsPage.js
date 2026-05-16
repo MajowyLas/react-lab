@@ -4,6 +4,7 @@ import MeetingsList from "./MeetingsList";
 
 export default function MeetingsPage() {
     const [meetings, setMeetings] = useState([]);
+    const [isFormVisible, setIsFormVisible] = useState(false);
 
     function handleNewMeeting(meeting) {
         const nextMeetings = [...meetings, meeting];
@@ -13,8 +14,9 @@ export default function MeetingsPage() {
     return (
         <div>
             <h2>Zajęcia ({meetings.length})</h2>
-            <NewMeetingForm onSubmit={(meeting) => handleNewMeeting(meeting)}/>
-            <MeetingsList meetings={meetings}/>
+            <button onClick={() => setIsFormVisible(true)}>Dodaj Spotkanie</button>
+            {isFormVisible && <NewMeetingForm onSubmit={(meeting) => handleNewMeeting(meeting)} />}
+                <MeetingsList meetings={meetings}/>
         </div>
     )
 }
