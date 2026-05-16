@@ -4,6 +4,7 @@ import {useState} from "react";
 import "milligram";
 import LoginForm from "./LoginForm";
 import UserPanel from "./UserPanel";
+import NewMeetingForm from "./meetings/NewMeetingForm";
 
 function App() {
     //let email = 'aniamaywald@gmail.com';
@@ -45,25 +46,21 @@ function App() {
 
 
     return (
-        <div>
+        <div className="container">
             <h1>Witaj w systemie do zapisów na zajęcia</h1>
 
-           <div>
-                <h2>{message}</h2>
-                <LoginForm onLogin={login}/>
-        </div>
-            ) : (
+            {
+                isLoggedIn
+                ? <LoginForm
+                    email={email}
+                    onLogout={logout}
+                />
 
-            return (
-            <div>
-                <h1>System do zapisów na zajęcia</h1>
-                {
-                    isLoggedIn
-                        ? <UserPanel username={isLoggedIn} onLogout={logout}/>
-                        : <LoginForm onLogin={login}/>
-                }
-            </div>
-            );
+                  : <UserPanel
+                onLogin={login}
+
+            />
+}
         </div>
     );
 }
