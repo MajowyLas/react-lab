@@ -20,6 +20,7 @@ function App() {
             message = <div>Twój adres e-mail jest stanowczo za długi.</div>;
         }
 
+
     return (
         <div>
             <h1> System do zapisów na zajęcia </h1>
