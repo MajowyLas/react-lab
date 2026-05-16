@@ -4,34 +4,25 @@ import {useState} from "react";
 import "milligram";
 import LoginForm from "./LoginForm";
 import UserPanel from "./UserPanel";
-import NewMeetingForm from "./meetings/NewMeetingForm";
+import MeetingsPage from "./meetings/MeetingsPage";
 
 function App() {
     //let email = 'aniamaywald@gmail.com';
     const [email, setEmail] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    function handleChange(event) {
-        //console.log(event.target.value);
-        setEmail(event.target.value);
-    }
-
-    function handleLogin() {
-        setIsLoggedIn(true);
-    }
-
-    function handleLogout() {
-        setIsLoggedIn(false);
-    }
 
     function login(loginForm) {
         setEmail(email);
         setIsLoggedIn(true)
     }
     function logout() {
-        setIsLoggedIn('')
+        setIsLoggedIn(false)
     }
 
+    //function addMeeting(meeting) {
+       // setMeetings('')
+   // }
 
 
     let message;
@@ -49,17 +40,13 @@ function App() {
         <div className="container">
             <h1>Witaj w systemie do zapisów na zajęcia</h1>
 
-            {
-                isLoggedIn
-                ? <LoginForm
-                    email={email}
-                    onLogout={logout}
-                />
+            {isLoggedIn
+                ? <>
+                    <UserPanel username={email} onLogout={logout} />
+                    <MeetingsPage />
+                </>
+                : <LoginForm onLogin={login} />
 
-                  : <UserPanel
-                onLogin={login}
-
-            />
 }
         </div>
     );
