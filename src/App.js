@@ -10,6 +10,7 @@ function App() {
     //let email = 'aniamaywald@gmail.com';
     const [email, setEmail] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [meetings, setMeetings] = useState([]);
 
 
     function login(loginForm) {
@@ -28,7 +29,7 @@ function App() {
             {isLoggedIn
                 ? <>
                     <UserPanel username={email} onLogout={logout} />
-                    <MeetingsPage />
+                    <MeetingsPage meetings={meetings} onNewMeeting={setMeetings} />
                 </>
                 : <LoginForm onLogin={login} />
 

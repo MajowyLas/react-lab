@@ -2,13 +2,13 @@ import {useState} from "react";
 import NewMeetingForm from "./NewMeetingForm";
 import MeetingsList from "./MeetingsList";
 
-export default function MeetingsPage() {
-    const [meetings, setMeetings] = useState([]);
+export default function MeetingsPage({meetings, onNewMeeting}) {
+
     const [isFormVisible, setIsFormVisible] = useState(false);
 
+
     function handleNewMeeting(meeting) {
-        const nextMeetings = [...meetings, meeting];
-        setMeetings(nextMeetings);
+        onNewMeeting([...meetings, meeting]);
     }
 
     return (
