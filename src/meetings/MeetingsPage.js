@@ -16,7 +16,8 @@ export default function MeetingsPage() {
             <h2>Zajęcia ({meetings.length})</h2>
             <button onClick={() => setIsFormVisible(true)}>Dodaj Spotkanie</button>
             {isFormVisible && <NewMeetingForm onSubmit={(meeting) => handleNewMeeting(meeting)} />}
-                <MeetingsList meetings={meetings}/>
+
+            {meetings.length > 0 && <MeetingsList meetings={meetings} />}
         </div>
     )
 }
